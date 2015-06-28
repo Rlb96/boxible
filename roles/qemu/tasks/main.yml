@@ -1,0 +1,4 @@
+---
+- name: Install qemu
+  homebrew: name=qemu state=latest
+

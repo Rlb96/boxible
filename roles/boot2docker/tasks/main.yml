@@ -1,0 +1,4 @@
+---
+- name: Install boot2docker
+  homebrew: name=boot2docker state=latest
+

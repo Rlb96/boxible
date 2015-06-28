@@ -1,0 +1,19 @@
+---
+  - name: Prevent DS_Store files from being written to network devices
+    command: defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+  - name: Disable key press and hold
+    command: defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+  - name: Enable full keyboard access for all controls
+    command: defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+  - name: Use function keys as standard function keys
+    command: defaults write NSGlobalDomain com.apple.keyboard.fnState -bool true
+  - name: Set key repeat rate to as fast as possible
+    command: defaults write NSGlobalDomain KeyRepeat -int 0
+  - name: Set trackpad tap to click
+    command: defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+  - name: Right click on lower right corner of trackpad
+    command: defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
+  - name: Hot Corner - Bottom Right is screen saver (step 1)
+    command: defaults write com.apple.dock wvous-bl-corner -int 5
+  - name: Hot Corner - Bottom Right is screen saver (step 2)
+    command: defaults write com.apple.dock wvous-bl-modifier -int 0

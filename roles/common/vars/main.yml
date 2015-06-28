@@ -1,0 +1,9 @@
+---
+taps:
+  - homebrew/dupes
+  - homebrew/binary
+  - caskroom/cask
+  - caskroom/versions
+
+packages:
+  - brew-cask

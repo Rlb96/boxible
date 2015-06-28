@@ -1,0 +1,3 @@
+---
+- name: Install Vagrant
+  homebrew_cask: name=vagrant state=installed

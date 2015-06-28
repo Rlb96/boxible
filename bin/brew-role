@@ -1,0 +1,15 @@
+#!/bin/bash
+
+mkdir -p roles/$1/{meta,tasks}
+cat << EOF > roles/$1/tasks/main.yml
+---
+- name: Install $1
+  homebrew: name=$1 state=latest
+
+EOF
+cat << EOF > roles/$1/meta/main.yml
+---
+dependencies:
+  - { role: common }
+
+EOF

@@ -1,0 +1,10 @@
+---
+- name: Install chruby
+  homebrew: name=chruby state=latest
+
+- name: Ensure chruby is sourced in bashrc
+  lineinfile:
+    create: yes
+    dest: ~/.bashrc
+    line: "source /usr/local/share/chruby/chruby.sh"
+    regexp: 'source /usr/local/share/chruby/chruby.sh'

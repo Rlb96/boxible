@@ -1,0 +1,15 @@
+#!/bin/bash
+
+mkdir -p roles/$1/{meta,tasks}
+cat << EOF > roles/$1/tasks/main.yml
+---
+- name: Install $1
+  easy_install: name=$1
+
+EOF
+cat << EOF > roles/$1/meta/main.yml
+---
+dependencies:
+  - { role: common }
+
+EOF

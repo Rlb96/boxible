@@ -1,0 +1,3 @@
+---
+# Empty means use the latest
+java_major_version: ""

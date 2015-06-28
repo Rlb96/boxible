@@ -1,0 +1,4 @@
+---
+dependencies:
+  - { role: common }
+  - { role: java, java_major_version: 6}

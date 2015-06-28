@@ -1,0 +1,6 @@
+---
+  atom_packages:
+    - vim-mode
+    - sublime-tabs
+    - editorconfig
+    - language-ini

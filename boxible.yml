@@ -1,0 +1,39 @@
+---
+- hosts: localhost
+  connection: local
+  roles:
+    - augeas
+    - atom
+    - boot2docker
+    - caffeine
+    - chruby
+    - charles
+    - git
+    - github
+    - google-chrome
+    - hipchat
+    - htop
+    - intellij-idea-ce
+    - iterm2
+    - java
+    - kaleidoscope
+    - node
+    - openstack-client
+    - packer
+    - powerline-shell
+    - qemu
+    - ruby-install
+    - scala
+    - sublime-text
+    - the_silver_searcher
+    - tree
+    - vagrant
+    - virtualbox
+    - wget
+    - wireshark
+    - xquartz
+
+- hosts: localhost
+  connection: local
+  roles:
+    - osx-defaults

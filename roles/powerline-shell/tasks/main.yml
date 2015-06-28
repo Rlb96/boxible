@@ -1,0 +1,43 @@
+---
+- name: Create temporary directory for git repos
+  shell: mktemp -d -t powerline-XXXXXX
+  register: temp_dir
+  changed_when: False
+
+- name: Set temp directory variable
+  set_fact: temp_dir_font={{temp_dir.stdout}}/powerline-fonts
+  changed_when: False
+
+- name: Clone powerline-fonts repo
+  git: repo="https://github.com/Lokaltog/powerline-fonts.git" dest={{ temp_dir_font }}
+
+# This does not work with the gzipped fonts
+- name: Copy fonts to user fonts directory
+  shell: "find {{ temp_dir_font }} -iname '*.[ot]tf' -type f -print0 | xargs -0 -I {} cp {} ~/Library/Fonts"
+
+- name: Clone or updtate powerline-shell repo
+  git:
+    repo: "https://github.com/milkbikis/powerline-shell.git"
+    dest: "~/powerline-shell"
+    force: yes
+
+- name: Copy config.py
+  copy: src=config.py dest="~/powerline-shell"
+
+- name: Copy powerline-shell.rc
+  copy: src=powerline-shell.rc dest=~/.powerline-shell.rc
+
+- name: Install powerline shell
+  shell: chdir=~/powerline-shell ~/powerline-shell/install.py
+
+- name: Ensure bashrc sources powerline-shell.rc
+  lineinfile:
+    create: yes
+    dest: ~/.bashrc
+    line: "source ~/.powerline-shell.rc"
+    regexp: '^source ~/\.powerline-shell\.rc'
+
+
+- name: Cleanup temporary directory
+  file: name={{ temp_dir_font }} state=absent
+  changed_when: False

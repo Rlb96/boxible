@@ -1,0 +1,51 @@
+#!/usr/bin/python
+
+def type_and_value(value):
+    if 
+
+    if value.strip().lower() in ['true', 'yes']:
+        return ('bool', 'true')
+    if value.strip().lower() in ['false', 'no']:
+        return ('bool', 'false')
+
+    num = None
+    try:
+        num = int(value)
+    except ValueError:
+        pass
+    else:
+        return ('int', str(num))
+
+    try:
+        num = float(value)
+    except ValueError:
+        pass
+    else:
+        return ('float', str(num))
+
+
+
+
+def main():
+    module = AnsibleModule(
+        argument_spec                   = dict(
+        state                           = dict(required=False, default='present', choices=['present', 'default']),
+        domain                          = dict(required=True, type='str'),
+        key                             = dict(required=True, type='str'),
+        value                           = dict(required=True, type='str'),
+        type                            = dict(required=False, type=None,
+                                               choices=['string','int','float','bool','array','array-add','dict','dict-add']),
+        ),
+    )
+
+    state = module.params['state']
+    domain = module.params['domain']
+    key = module.params['key']
+    value = module.params['value']
+    type = module.params['type']
+
+    module.exit_json(state=state, domain=domain, key=key, value=value, type=type)
+
+# import module snippets
+from ansible.module_utils.basic import *
+main()

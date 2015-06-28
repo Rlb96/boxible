@@ -1,0 +1,2 @@
+- name: Install the_silver_searcher
+  homebrew: name=the_silver_searcher state=latest

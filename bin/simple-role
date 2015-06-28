@@ -1,0 +1,10 @@
+#!/bin/bash
+
+mkdir -p roles/$1/{meta,tasks}
+touch roles/$1/tasks/main.yml
+cat << EOF > roles/$1/meta/main.yml
+---
+dependencies:
+  - { role: common }
+
+EOF

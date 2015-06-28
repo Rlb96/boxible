@@ -1,0 +1,8 @@
+---
+- name: Install openstack-client
+  pip: name={{ item }} state=latest
+  with_items:
+    - python-glanceclient
+    - python-keystoneclient
+    - python-neutronclient
+    - python-novaclient

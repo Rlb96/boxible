@@ -1,0 +1,3 @@
+---
+- name: Install Github Client
+  homebrew_cask: name=github state=installed

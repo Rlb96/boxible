@@ -1,0 +1,3 @@
+---
+- name: Install XQuartz
+  homebrew_cask: name=xquartz state=installed
